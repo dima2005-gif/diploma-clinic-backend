@@ -2,7 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from ...models import Patient
-from ...serializers.patient.serializers import PatientDashboardSerializer
+from ...serializers.patient.patient_dashboard.serializers import PatientDashboardSerializer
 
 class PatientDashboardView(APIView):
     permission_classes = [IsAuthenticated]

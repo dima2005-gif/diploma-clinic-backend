@@ -10,6 +10,17 @@ gender_choices = [
     ('Жінка', 'Жінка'),
 ]
 
+blood_group = [
+    ('I Rh+', 'I Rh+'),
+    ('I Rh-', 'I Rh-'),
+    ('II Rh+', 'II Rh+'),
+    ('II Rh-', 'II Rh-'),
+    ('III Rh+', 'III Rh+'),
+    ('III Rh-', 'III Rh-'),
+    ('IV Rh+', 'IV Rh+'),
+    ('IV Rh-', 'IV Rh-'),
+]
+
 marital_status = [
     ('Одружений', 'Одружений'),
     ('Неодружений', 'Неодружений'),

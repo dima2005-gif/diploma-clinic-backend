@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from .validators import phone_regex, gender_choices, marital_status, education, days_of_week, status
+from .validators import phone_regex, gender_choices, marital_status, education, days_of_week, status, blood_group
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django_cryptography.fields import encrypt
 from simple_history.models import HistoricalRecords
@@ -24,6 +24,7 @@ class Patient(models.Model):
     sex = models.CharField(choices=gender_choices, max_length=10)
     weight = encrypt(models.FloatField())
     height = encrypt(models.FloatField())
+    blood_group = encrypt(models.CharField(choices=blood_group, max_length=100))
 
     history = HistoricalRecords()
 

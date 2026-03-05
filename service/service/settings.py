@@ -93,12 +93,12 @@ SIMPLE_JWT = {
     'ROTATE_REFRESH_TOKENS': True,
     'BLACKLIST_AFTER_ROTATION': True,
     'ALGORITHM': 'HS256',
-    'SIGNING_KEY': SECRET_KEY,
+    'SIGNING_KEY': os.getenv('SECRET_KEY_JWT'),
     'AUTH_HEADER_TYPES': ('Bearer',),
     'AUTH_COOKIE': 'refresh_token',
     'AUTH_COOKIE_SECURE': False,
     'AUTH_COOKIE_HTTP_ONLY': True,
-    'AUTH_COOKIE_SAMESITE': 'Lax',  
+    'AUTH_COOKIE_SAMESITE': 'Strict',  
 }
 
 

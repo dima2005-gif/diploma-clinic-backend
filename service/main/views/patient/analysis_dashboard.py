@@ -1,4 +1,3 @@
-from rest_framework import serializers
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
@@ -14,12 +13,11 @@ class PatientAnalysisView(APIView):
     def get(self, request):
         try:
             patient = Patient.objects.get(user=request.user)
-            analysis = (
-                Prescribed_Analysis.objects.select_related("analysis", "doctor")
-                .filter(patient=patient)
-                .order_by("-date_prescribed")
-            )
-            serializer = PrescribedAnalysisSerializers(analysis, many=True)
+            analyses = Prescribed_Analysis.objects.select_related(
+                "medical_history__prescribed_service__doctor",
+                "analysis",
+            ).filter(medical_history__prescribed_service__patient=patient)
+            serializer = PrescribedAnalysisSerializers(analyses, many=True)
             return Response(serializer.data)
         except Patient.DoesNotExist:
-            return Response({"error": "Аналізи відсутні"}, status=404)
+            return Response({"error": "Пацієнта не знайдено"}, status=404)

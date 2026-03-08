@@ -1,27 +1,36 @@
 from rest_framework import serializers
-from main.models import Analysis_Guide, Employee, Prescribed_Analysis
+from main.models import Prescribed_Analysis, Analysis_Guide, Employee
 
 
 class AnalysisGuideSerializers(serializers.ModelSerializer):
     class Meta:
         model = Analysis_Guide
-        fields = ["name"]
+        fields = ["name", "description"]
 
 
 class EmployeeSerializers(serializers.ModelSerializer):
     class Meta:
         model = Employee
-        fields = ["first_name", "last_name"]
+        fields = ["first_name", "last_name", "middle_name"]
 
 
-class PrescribedAnalysisSerializers(serializers.ModelSerializer):
+class PrescribedAnalysisViewSerializers(serializers.ModelSerializer):
     analysis = AnalysisGuideSerializers(read_only=True)
     doctor = serializers.SerializerMethodField()
+    laboratory_assistant = EmployeeSerializers(read_only=True)
     date_prescribed = serializers.SerializerMethodField()
 
     class Meta:
         model = Prescribed_Analysis
-        fields = ["id", "analysis", "doctor", "date_prescribed", "status"]
+        fields = [
+            "id",
+            "analysis",
+            "doctor",
+            "laboratory_assistant",
+            "date_prescribed",
+            "status",
+            "result",
+        ]
 
     def get_doctor(self, obj):
         doctor = obj.medical_history.prescribed_service.doctor

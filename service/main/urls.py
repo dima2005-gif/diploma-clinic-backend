@@ -10,6 +10,9 @@ from .views.patient.medical_history import PatientMedicalHistoryListView
 from .views.patient.medical_history_detail import PatientMedicalHistoryDetailView
 from .views.patient.visit_list import VisitListView
 from .views.appoinmemts import AvailableSlotView
+from .views.patient.visit_create import VisitCreateView
+from .views.patient.visit_update import VisitUpdateView
+from .views.patient.visit_delete import VisitDeleteView
 
 urlpatterns = [
     path("login/", MyTokenObtainPairView.as_view(), name="token_obtain_pair"),
@@ -47,8 +50,23 @@ urlpatterns = [
         name="patient_visit_list",
     ),
     path(
-        "patient/appoinmemts/availble-slots/",
+        "patient/appointments/availble-slots/",
         AvailableSlotView.as_view(),
         name="slots",
+    ),
+    path(
+        "patient/visit/create/",
+        VisitCreateView.as_view(),
+        name="patient_create_visit",
+    ),
+    path(
+        "patient/visit/<int:pk>/update/",
+        VisitUpdateView.as_view(),
+        name="patient_update_visit",
+    ),
+    path(
+        "patient/visit/<int:pk>/delete/",
+        VisitDeleteView.as_view(),
+        name="patient_delete_visit",
     ),
 ]

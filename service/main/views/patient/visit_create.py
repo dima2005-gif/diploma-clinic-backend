@@ -5,6 +5,7 @@ from main.serializers.patient.visit_create.serializers import (
     CreatePrescribedServiceSerializers,
 )
 from main.models import Patient, Prescribed_Service, Position_Service
+from django.utils import timezone
 
 
 class VisitCreateView(APIView):
@@ -29,11 +30,19 @@ class VisitCreateView(APIView):
         if not is_valid:
             return Response({"error": "Цей лікар не надає таку послугу"}, status=400)
 
-        is_busy = Prescribed_Service.objects.filter(
-            doctor=doctor, date_prescribed=date_prescribed
-        ).exists()
+        is_busy = (
+            Prescribed_Service.objects.filter(
+                doctor=doctor, date_prescribed=date_prescribed
+            )
+            .exclude(status="Відмовлено")
+            .exists()
+        )
         if is_busy:
             return Response({"error": "Цей час вже зайнятий"}, status=400)
+        if date_prescribed < timezone.now():
+            return Response(
+                {"error": "Неможливо створити візит у минулому"}, status=400
+            )
 
         serializer.save(patient=patient, status="Заплановано")
         return Response(serializer.data, status=201)

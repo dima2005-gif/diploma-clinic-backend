@@ -16,9 +16,11 @@ class PatientServiceDetailView(APIView):
             patient = Patient.objects.get(user=request.user)
             service = Position_Service.objects.select_related(
                 "service", "position"
-            ).get(service__id=pk)
-            serializer = PositionServiceSerializers(service)
-            return Response(serializer.data)
+            ).filter(service__id=pk)
+            serializer = [
+                PositionServiceSerializers(service).data for service in service
+            ]
+            return Response(serializer)
         except Patient.DoesNotExist:
             return Response({"error": "Профіль пацієнта не знайдений"}, status=404)
         except Position_Service.DoesNotExist:

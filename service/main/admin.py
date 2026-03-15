@@ -15,6 +15,7 @@ from .models import (
     Response,
     Diagnosis_Guide,
     Medicine_Guide,
+    Code,
 )
 
 admin.site.register(CustomUser)
@@ -32,5 +33,6 @@ admin.site.register(Prescribed_Medicine)
 admin.site.register(Response)
 admin.site.register(Diagnosis_Guide)
 admin.site.register(Medicine_Guide)
+admin.site.register(Code)
 
 # Register your models here.

@@ -4,10 +4,10 @@ from rest_framework.response import Response
 from main.models import Prescribed_Service, Patient
 
 
-class VisitDeleteView(APIView):
+class VisitCancelView(APIView):
     permission_classes = [IsAuthenticated]
 
-    def delete(self, request, pk):
+    def patch(self, request, pk):
 
         try:
             patient = Patient.objects.get(user=request.user)
@@ -21,7 +21,8 @@ class VisitDeleteView(APIView):
 
         if visit.status == "Підтверджено":
             return Response(
-                {"error": "Не можна видалити запис якщо він підтверджений"}, status=400
+                {"error": "Не можна скасувати запис якщо він підтверджений"}, status=400
             )
-        visit.delete()
+        visit.status = "Відмовлено"
+        visit.save()
         return Response({"message": "Запис видалено"}, status=204)

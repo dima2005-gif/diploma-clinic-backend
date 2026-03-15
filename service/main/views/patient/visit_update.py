@@ -10,6 +10,15 @@ from main.serializers.patient.visit_update.serializers import (
 class VisitUpdateView(APIView):
     permission_classes = [IsAuthenticated]
 
+    def get(self, request, pk):
+        try:
+            patient = Patient.objects.get(user=request.user)
+            visit = Prescribed_Service.objects.get(id=pk, patient=patient)
+        except (Patient.DoesNotExist, Prescribed_Service.DoesNotExist):
+            return Response({"error": "Запис не знайдено"}, status=404)
+        serializer = UpdatePrescribedServiceSerializers(visit)
+        return Response(serializer.data)
+
     def put(self, request, pk):
         try:
             patient = Patient.objects.get(user=request.user)
@@ -46,6 +55,7 @@ class VisitUpdateView(APIView):
                 doctor=doctor, date_prescribed=date_prescribed
             )
             .exclude(id=pk)
+            .exclude(status="Відмовлено")
             .exists()
         )
         if is_busy:

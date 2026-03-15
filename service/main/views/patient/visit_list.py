@@ -3,6 +3,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from main.models import Patient, Prescribed_Service
 from main.serializers.patient.visit_list.serializers import PrescribedServiceSerializers
+from main.views.patient import medical_history
 
 
 class VisitListView(APIView):
@@ -16,7 +17,7 @@ class VisitListView(APIView):
                     "service",
                     "doctor",
                 )
-                .filter(patient=patient)
+                .filter(patient=patient, medical_history__isnull=True)
                 .order_by("-date_prescribed")
             )
             serializer = PrescribedServiceSerializers(visits, many=True)

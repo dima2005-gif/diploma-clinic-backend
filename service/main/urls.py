@@ -12,7 +12,7 @@ from .views.patient.visit_list import VisitListView
 from .views.appoinmemts import AvailableSlotView
 from .views.patient.visit_create import VisitCreateView
 from .views.patient.visit_update import VisitUpdateView
-from .views.patient.visit_delete import VisitDeleteView
+from .views.patient.visit_cancel import VisitCancelView
 
 urlpatterns = [
     path("login/", MyTokenObtainPairView.as_view(), name="token_obtain_pair"),
@@ -65,8 +65,8 @@ urlpatterns = [
         name="patient_update_visit",
     ),
     path(
-        "patient/visit/<int:pk>/delete/",
-        VisitDeleteView.as_view(),
-        name="patient_delete_visit",
+        "patient/visit/<int:pk>/cancel/",
+        VisitCancelView.as_view(),
+        name="patient_cancel_visit",
     ),
 ]

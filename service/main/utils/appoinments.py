@@ -28,9 +28,11 @@ def get_available_slots(doctor, date):
     end = datetime.combine(date, schedule.end_time)
 
     while current + timedelta(minutes=SLOT_DURATION) <= end:
-        is_busy = Prescribed_Service.objects.filter(
-            doctor=doctor, date_prescribed=current
-        ).exists()
+        is_busy = (
+            Prescribed_Service.objects.filter(doctor=doctor, date_prescribed=current)
+            .exclude(status="Відмовлено")
+            .exists()
+        )
 
         if not is_busy:
             slots.append(current.strftime("%H:%M"))

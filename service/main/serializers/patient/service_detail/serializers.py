@@ -28,7 +28,14 @@ class EmployeeSerializers(serializers.ModelSerializer):
 
     class Meta:
         model = Employee
-        fields = ["first_name", "last_name", "middle_name", "position", "schedule"]
+        fields = [
+            "id",
+            "first_name",
+            "last_name",
+            "middle_name",
+            "position",
+            "schedule",
+        ]
 
 
 class ServiceGuideSerializer(serializers.ModelSerializer):
@@ -44,14 +51,14 @@ class ServiceGuideSerializer(serializers.ModelSerializer):
 
 class PositionServiceSerializers(serializers.ModelSerializer):
     service = ServiceGuideSerializer(read_only=True)
-    employees = serializers.SerializerMethodField()
+    doctor = serializers.SerializerMethodField()
 
     class Meta:
         model = Position_Service
-        fields = ["service", "employees"]
+        fields = ["service", "doctor"]
 
-    def get_employees(self, obj):
-        employees = Employee.objects.filter(position=obj.position).prefetch_related(
+    def get_doctor(self, obj):
+        doctor = Employee.objects.filter(position=obj.position).prefetch_related(
             "work_schedule_set"
         )
-        return EmployeeSerializers(employees, many=True).data
+        return EmployeeSerializers(doctor, many=True).data

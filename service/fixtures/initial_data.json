@@ -123,6 +123,31 @@
   }
 },
 {
+  "model": "main.historicalemployee",
+  "pk": 4,
+  "fields": {
+    "id": 4,
+    "first_name": "Світлана",
+    "last_name": "Петренко",
+    "middle_name": "Петрівна",
+    "date_of_birth": "2000-09-27",
+    "phone_number": "+380664106500",
+    "address": "вул. Зеленського 95",
+    "email": "sv_koval@gmail.com",
+    "sex": "Жінка",
+    "marital_status": "Неодружена",
+    "education": "Базова вища освіта",
+    "date_of_hire": "2026-03-24",
+    "date_of_dismissal": null,
+    "user": 4,
+    "position": 4,
+    "history_date": "2026-03-24T22:23:08.331",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
   "model": "main.employee",
   "pk": 3,
   "fields": {
@@ -138,6 +163,26 @@
     "sex": "Чоловік",
     "marital_status": "Одружений",
     "education": "Вища освіта",
+    "date_of_hire": "2026-03-24",
+    "date_of_dismissal": null
+  }
+},
+{
+  "model": "main.employee",
+  "pk": 4,
+  "fields": {
+    "user": 4,
+    "first_name": "Світлана",
+    "last_name": "Петренко",
+    "middle_name": "Петрівна",
+    "position": 4,
+    "date_of_birth": "2000-09-27",
+    "phone_number": "+380664106500",
+    "address": "вул. Зеленського 95",
+    "email": "sv_koval@gmail.com",
+    "sex": "Жінка",
+    "marital_status": "Неодружена",
+    "education": "Базова вища освіта",
     "date_of_hire": "2026-03-24",
     "date_of_dismissal": null
   }
@@ -216,11 +261,227 @@
   }
 },
 {
+  "model": "main.historicalposition",
+  "pk": 4,
+  "fields": {
+    "id": 4,
+    "name": "Лаборант",
+    "code": 2,
+    "history_date": "2026-03-24T22:22:27.907",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
   "model": "main.position",
   "pk": 3,
   "fields": {
     "name": "Терапевт",
     "code": 1
+  }
+},
+{
+  "model": "main.position",
+  "pk": 4,
+  "fields": {
+    "name": "Лаборант",
+    "code": 2
+  }
+},
+{
+  "model": "main.work_schedule",
+  "pk": 3,
+  "fields": {
+    "employee": 3,
+    "day_of_week": "Понеділок",
+    "start_time": "08:00:00",
+    "end_time": "18:00:00"
+  }
+},
+{
+  "model": "main.work_schedule",
+  "pk": 4,
+  "fields": {
+    "employee": 3,
+    "day_of_week": "Вівторок",
+    "start_time": "08:00:00",
+    "end_time": "18:00:00"
+  }
+},
+{
+  "model": "main.work_schedule",
+  "pk": 5,
+  "fields": {
+    "employee": 3,
+    "day_of_week": "Середа",
+    "start_time": "08:00:00",
+    "end_time": "18:00:00"
+  }
+},
+{
+  "model": "main.work_schedule",
+  "pk": 6,
+  "fields": {
+    "employee": 3,
+    "day_of_week": "Четвер",
+    "start_time": "08:00:00",
+    "end_time": "18:00:00"
+  }
+},
+{
+  "model": "main.historicalprescribed_service",
+  "pk": 11,
+  "fields": {
+    "id": 4,
+    "date_prescribed": "2026-03-25T08:00:00",
+    "status": "Заплановано",
+    "patient": 1,
+    "doctor": 3,
+    "service": 1,
+    "history_date": "2026-03-24T20:57:37.447",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "main.historicalprescribed_service",
+  "pk": 12,
+  "fields": {
+    "id": 4,
+    "date_prescribed": "2026-03-25T08:00:00",
+    "status": "Підтверджено",
+    "patient": 1,
+    "doctor": 3,
+    "service": 1,
+    "history_date": "2026-03-24T20:58:16.293",
+    "history_change_reason": null,
+    "history_type": "~",
+    "history_user": null
+  }
+},
+{
+  "model": "main.historicalprescribed_service",
+  "pk": 13,
+  "fields": {
+    "id": 5,
+    "date_prescribed": "2026-03-15T08:00:00",
+    "status": "Підтверджено",
+    "patient": 1,
+    "doctor": 3,
+    "service": 1,
+    "history_date": "2026-03-24T22:21:09.992",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "main.prescribed_service",
+  "pk": 4,
+  "fields": {
+    "patient": 1,
+    "doctor": 3,
+    "service": 1,
+    "date_prescribed": "2026-03-25T08:00:00",
+    "status": "Підтверджено"
+  }
+},
+{
+  "model": "main.prescribed_service",
+  "pk": 5,
+  "fields": {
+    "patient": 1,
+    "doctor": 3,
+    "service": 1,
+    "date_prescribed": "2026-03-15T08:00:00",
+    "status": "Підтверджено"
+  }
+},
+{
+  "model": "main.historicalmedical_history",
+  "pk": 3,
+  "fields": {
+    "id": 2,
+    "date_departure": "2026-03-15",
+    "conclusion": "Висновок",
+    "prescribed_service": 5,
+    "diagnosis": 1,
+    "history_date": "2026-03-24T22:21:40.275",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "main.medical_history",
+  "pk": 2,
+  "fields": {
+    "prescribed_service": 5,
+    "date_departure": "2026-03-15",
+    "diagnosis": 1,
+    "conclusion": "Висновок"
+  }
+},
+{
+  "model": "main.historicalprescribed_analysis",
+  "pk": 11,
+  "fields": {
+    "id": 2,
+    "date_prescribed": "2026-03-15T11:00:00",
+    "result": "",
+    "status": "Підтверджено",
+    "medical_history": 2,
+    "analysis": 1,
+    "laboratory_assistant": 4,
+    "history_date": "2026-03-24T22:23:27.240",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "main.prescribed_analysis",
+  "pk": 2,
+  "fields": {
+    "medical_history": 2,
+    "analysis": 1,
+    "laboratory_assistant": 4,
+    "date_prescribed": "2026-03-15T11:00:00",
+    "result": "",
+    "status": "Підтверджено"
+  }
+},
+{
+  "model": "main.historicalprescribed_medicine",
+  "pk": 2,
+  "fields": {
+    "id": 2,
+    "recipe": "Пити 3 рази на день",
+    "medical_history": 2,
+    "medicine": 1,
+    "history_date": "2026-03-24T22:23:47.304",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "main.prescribed_medicine",
+  "pk": 2,
+  "fields": {
+    "medical_history": 2,
+    "medicine": 1,
+    "recipe": "Пити 3 рази на день"
+  }
+},
+{
+  "model": "main.position_service",
+  "pk": 2,
+  "fields": {
+    "position": 3,
+    "service": 1
   }
 }
 ]

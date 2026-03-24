@@ -1,0 +1,226 @@
+[
+{
+  "model": "main.customuser",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$Zsk3oUzygqisv9dFyqB3fd$eyJZJmgwn9ceuuhwUFbi5MTaldHnbKZM9vX2TfVe2sQ=",
+    "last_login": "2026-03-24T20:04:59.143",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-02-27T19:07:55.994",
+    "is_employee": false,
+    "is_patient": false,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "main.customuser",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$eVGxV8Hqho0zqMBGKtD5GX$qIqQDxmbvp6MqML5QPlc81b91ftXdZ7bSVmoGId/d74=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "dimka2005",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-02-27T19:11:19",
+    "is_employee": false,
+    "is_patient": true,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "main.customuser",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$nL4LdHZHoJGSRHavU9RXcf$ZAxbU34oFuTEEjj9Heks+7c7J024ZbKll+9H0ziDYkc=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "ivan_ivanov",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-03-04T21:44:39",
+    "is_employee": true,
+    "is_patient": false,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "main.customuser",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$36000$PrrYvfkUaWQz$JhHz8LGRfRz8EfehnLjU9uf5q4+KEvjVOPQLgReZuNg=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "svitlana_koval",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-03-04T21:50:04",
+    "is_employee": true,
+    "is_patient": false,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "main.patient",
+  "pk": 1,
+  "fields": {
+    "user": 2,
+    "first_name": "Дмитро",
+    "last_name": "Величко",
+    "middle_name": "Володимирович",
+    "date_of_birth": "2005-06-25",
+    "phone_number": "+380664106300",
+    "email": "dima2005157@gmail.com",
+    "address": "вул. Південа 6",
+    "sex": "Чоловік",
+    "weight": 85.0,
+    "height": 180.0,
+    "blood_group": "II Rh+"
+  }
+},
+{
+  "model": "main.historicalemployee",
+  "pk": 3,
+  "fields": {
+    "id": 3,
+    "first_name": "Іван",
+    "last_name": "Іванов",
+    "middle_name": "Іванович",
+    "date_of_birth": "1990-03-15",
+    "phone_number": "+380663106500",
+    "address": "вул. Південа 6",
+    "email": "ivanivanov@gmail.com",
+    "sex": "Чоловік",
+    "marital_status": "Одружений",
+    "education": "Вища освіта",
+    "date_of_hire": "2026-03-24",
+    "date_of_dismissal": null,
+    "user": 3,
+    "position": 3,
+    "history_date": "2026-03-24T20:24:20.908",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "main.employee",
+  "pk": 3,
+  "fields": {
+    "user": 3,
+    "first_name": "Іван",
+    "last_name": "Іванов",
+    "middle_name": "Іванович",
+    "position": 3,
+    "date_of_birth": "1990-03-15",
+    "phone_number": "+380663106500",
+    "address": "вул. Південа 6",
+    "email": "ivanivanov@gmail.com",
+    "sex": "Чоловік",
+    "marital_status": "Одружений",
+    "education": "Вища освіта",
+    "date_of_hire": "2026-03-24",
+    "date_of_dismissal": null
+  }
+},
+{
+  "model": "main.diagnosis_guide",
+  "pk": 1,
+  "fields": {
+    "name": "Сухий кашель"
+  }
+},
+{
+  "model": "main.analysis_guide",
+  "pk": 1,
+  "fields": {
+    "name": "Загальний аналіз крові",
+    "description": "Загальний аналіз крові",
+    "price": "100.00"
+  }
+},
+{
+  "model": "main.medicine_guide",
+  "pk": 1,
+  "fields": {
+    "name": "Евкабал"
+  }
+},
+{
+  "model": "main.service_guide",
+  "pk": 1,
+  "fields": {
+    "name": "Консультація",
+    "description": "Консультація з лікарем",
+    "price": "0.00"
+  }
+},
+{
+  "model": "main.code",
+  "pk": 1,
+  "fields": {
+    "name": "doctor"
+  }
+},
+{
+  "model": "main.code",
+  "pk": 2,
+  "fields": {
+    "name": "lab"
+  }
+},
+{
+  "model": "main.code",
+  "pk": 3,
+  "fields": {
+    "name": "register"
+  }
+},
+{
+  "model": "main.code",
+  "pk": 4,
+  "fields": {
+    "name": "administrator"
+  }
+},
+{
+  "model": "main.historicalposition",
+  "pk": 3,
+  "fields": {
+    "id": 3,
+    "name": "Терапевт",
+    "code": 1,
+    "history_date": "2026-03-24T20:23:41.125",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "main.position",
+  "pk": 3,
+  "fields": {
+    "name": "Терапевт",
+    "code": 1
+  }
+}
+]

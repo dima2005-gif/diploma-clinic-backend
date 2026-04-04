@@ -16,7 +16,14 @@ from .views.patient.visit_cancel import VisitCancelView
 from .views.doctor.visit_confirm import VisitConfirmView
 from .views.doctor.doctor_dashboard import DoctorDashboardView
 from .views.doctor.visit_list import DoctorVisitListView
-
+from .views.doctor.visit_detail import DoctorVisitDetailView
+from .views.doctor.patient_history import PatientHistoryView
+from .views.doctor.add_diagnosis import AddDiagnosisView
+from .views.doctor.update_diagnosis import UpdateDiagnosisView
+from .views.doctor.delete_diagnosis import DeleteDiagnosisView
+from .views.doctor.add_medicines import AddMedicinesView
+from .views.doctor.update_medicines import UpdateMedicinesView
+from .views.doctor.delete_medicines import DeleteMedicinesView
 
 urlpatterns = [
     path("login/", MyTokenObtainPairView.as_view(), name="token_obtain_pair"),
@@ -88,5 +95,45 @@ urlpatterns = [
         "doctor/visit/",
         DoctorVisitListView.as_view(),
         name="doctor_visit_list",
+    ),
+    path(
+        "doctor/visit/<int:pk>/",
+        DoctorVisitDetailView.as_view(),
+        name="doctor_visit_detail",
+    ),
+    path(
+        "doctor/patient/<int:patient_id>/history/",
+        PatientHistoryView.as_view(),
+        name="doctor_patient_history",
+    ),
+    path(
+        "doctor/visit/<int:pk>/add-diagnosis/",
+        AddDiagnosisView.as_view(),
+        name="doctor_add_diagnosis",
+    ),
+    path(
+        "doctor/visit/<int:pk>/update-diagnosis/",
+        UpdateDiagnosisView.as_view(),
+        name="doctor_update_diagnosis",
+    ),
+    path(
+        "doctor/visit/<int:pk>/delete-diagnosis/",
+        DeleteDiagnosisView.as_view(),
+        name="doctor_delete_diagnosis",
+    ),
+    path(
+        "doctor/visit/<int:pk>/add-medicines/",
+        AddMedicinesView.as_view(),
+        name="doctor_add_medicines",
+    ),
+    path(
+        "doctor/visit/<int:pk>/<medicine_id>/update-medicines/",
+        UpdateMedicinesView.as_view(),
+        name="doctor_update_medicines",
+    ),
+    path(
+        "doctor/visit/<int:pk>/<medicine_id>/delete-medicines/",
+        DeleteMedicinesView.as_view(),
+        name="doctor_delete_medicines",
     ),
 ]

@@ -142,7 +142,9 @@ class Medical_History(models.Model):
         Prescribed_Service, on_delete=models.CASCADE, null=True, blank=True
     )
     date_departure = models.DateField(blank=True, null=True)
-    diagnosis = models.ForeignKey(Diagnosis_Guide, on_delete=models.CASCADE)
+    diagnosis = models.ForeignKey(
+        Diagnosis_Guide, on_delete=models.CASCADE, null=True, blank=True
+    )
     conclusion = encrypt(models.TextField())
 
     history = HistoricalRecords()

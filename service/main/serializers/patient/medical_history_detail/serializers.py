@@ -19,7 +19,7 @@ class DiagnosisSerializers(serializers.ModelSerializer):
 class EmployeeSerializers(serializers.ModelSerializer):
     class Meta:
         model = Employee
-        fields = ["first_name", "last_name", "middle_name"]
+        fields = ["id", "first_name", "last_name", "middle_name"]
 
 
 class AnalysisGuideSerializers(serializers.ModelSerializer):

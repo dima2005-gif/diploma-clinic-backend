@@ -32,6 +32,13 @@ from .views.doctor.add_analysis import AddAnalysisView
 from .views.doctor.update_analysis import UpdateAnalysisView
 from .views.doctor.delete_analysis import CancelAnalysisView
 from .views.doctor.close_history import CloseMedicalHistoryView
+from .views.laboratory.laboratory_dashboard import LaborantDashboardView
+from .views.laboratory.analysis_list import LaborantAnalysisListView
+from .views.laboratory.analysis_confirm import LaborantAnalysisConfirmView
+from .views.laboratory.analysis_detail import LaborantAnalysisDetailView
+from .views.laboratory.analysis_update import LaborantAnalysisUpdateResultView
+from .views.laboratory.analysis_delete import LaborantAnalysisDeleteResultView
+
 
 urlpatterns = [
     path("login/", MyTokenObtainPairView.as_view(), name="token_obtain_pair"),
@@ -152,7 +159,7 @@ urlpatterns = [
     path("medicines/", MedicinesListView.as_view(), name="doctor_medicines_list"),
     path("analysis/", AnalysisGuideListView.as_view(), name="doctor_analysis_list"),
     path(
-        "laborant/",
+        "laborant-list/",
         LaboratoryAssistantListView.as_view(),
         name="doctor_lab_asistant_list",
     ),
@@ -175,5 +182,36 @@ urlpatterns = [
         "doctor/visit/<int:pk>/close-history/",
         CloseMedicalHistoryView.as_view(),
         name="doctor_close_history",
+    ),
+    # Laboratory
+    path(
+        "laborant/",
+        LaborantDashboardView.as_view(),
+        name="laborant_dashboard",
+    ),
+    path(
+        "laborant/analysis/",
+        LaborantAnalysisListView.as_view(),
+        name="laborant_analysis",
+    ),
+    path(
+        "laborant/analysis/<int:pk>/confirm/",
+        LaborantAnalysisConfirmView.as_view(),
+        name="laborant_analysis_confirm",
+    ),
+    path(
+        "laborant/analysis/<int:pk>/",
+        LaborantAnalysisDetailView.as_view(),
+        name="laborant_analysis_detail",
+    ),
+    path(
+        "laborant/analysis/<int:pk>/result/",
+        LaborantAnalysisUpdateResultView.as_view(),
+        name="laborant_analysis_result",
+    ),
+    path(
+        "laborant/analysis/<int:pk>/result/delete/",
+        LaborantAnalysisDeleteResultView.as_view(),
+        name="laborant_analysis_cancel",
     ),
 ]

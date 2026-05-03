@@ -27,5 +27,8 @@ class AddDiagnosisView(APIView):
             defaults={"diagnosis": diagnosis, "conclusion": conclusion},
         )
         if not created:
-            return Response({"error": "Діагноз додано"}, status=400)
+            history.diagnosis = diagnosis
+            history.conclusion = conclusion
+            history.save()
+            return Response({"message": "Діагноз вже було оновлено додано"})
         return Response({"message": "Діагноз додано"})

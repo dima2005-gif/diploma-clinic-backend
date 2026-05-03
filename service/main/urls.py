@@ -24,6 +24,14 @@ from .views.doctor.delete_diagnosis import DeleteDiagnosisView
 from .views.doctor.add_medicines import AddMedicinesView
 from .views.doctor.update_medicines import UpdateMedicinesView
 from .views.doctor.delete_medicines import DeleteMedicinesView
+from .views.doctor.diagnosis_list import DiagnosisListView
+from .views.doctor.medicines_list import MedicinesListView
+from .views.doctor.analysis_list import AnalysisGuideListView
+from .views.doctor.lab_asistant_list import LaboratoryAssistantListView
+from .views.doctor.add_analysis import AddAnalysisView
+from .views.doctor.update_analysis import UpdateAnalysisView
+from .views.doctor.delete_analysis import CancelAnalysisView
+from .views.doctor.close_history import CloseMedicalHistoryView
 
 urlpatterns = [
     path("login/", MyTokenObtainPairView.as_view(), name="token_obtain_pair"),
@@ -135,5 +143,37 @@ urlpatterns = [
         "doctor/visit/<int:pk>/<medicine_id>/delete-medicines/",
         DeleteMedicinesView.as_view(),
         name="doctor_delete_medicines",
+    ),
+    path(
+        "diagnosis/",
+        DiagnosisListView.as_view(),
+        name="doctor_diagnosis_list",
+    ),
+    path("medicines/", MedicinesListView.as_view(), name="doctor_medicines_list"),
+    path("analysis/", AnalysisGuideListView.as_view(), name="doctor_analysis_list"),
+    path(
+        "laborant/",
+        LaboratoryAssistantListView.as_view(),
+        name="doctor_lab_asistant_list",
+    ),
+    path(
+        "doctor/visit/<int:pk>/add-analysis/",
+        AddAnalysisView.as_view(),
+        name="doctor_add_analysis",
+    ),
+    path(
+        "doctor/visit/<int:pk>/update-analysis/<analysis_id>/",
+        UpdateAnalysisView.as_view(),
+        name="doctor_update_analysis",
+    ),
+    path(
+        "doctor/visit/<int:pk>/cancel-analysis/<analysis_id>/",
+        CancelAnalysisView.as_view(),
+        name="doctor_cancel_analysis",
+    ),
+    path(
+        "doctor/visit/<int:pk>/close-history/",
+        CloseMedicalHistoryView.as_view(),
+        name="doctor_close_history",
     ),
 ]

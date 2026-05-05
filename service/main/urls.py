@@ -38,7 +38,10 @@ from .views.laboratory.analysis_confirm import LaborantAnalysisConfirmView
 from .views.laboratory.analysis_detail import LaborantAnalysisDetailView
 from .views.laboratory.analysis_update import LaborantAnalysisUpdateResultView
 from .views.laboratory.analysis_delete import LaborantAnalysisDeleteResultView
-
+from .views.register.patient_list import RegisterPatientListView
+from .views.register.patient_detail import RegisterPatientDetailView
+from .views.register.patient_create import RegisterPatientCreateView
+from .views.register.patient_update import RegisterPatientUpdateView
 
 urlpatterns = [
     path("login/", MyTokenObtainPairView.as_view(), name="token_obtain_pair"),
@@ -213,5 +216,20 @@ urlpatterns = [
         "laborant/analysis/<int:pk>/result/delete/",
         LaborantAnalysisDeleteResultView.as_view(),
         name="laborant_analysis_cancel",
+    ),
+    # Register
+    path("register/", RegisterPatientListView.as_view(), name="register"),
+    path(
+        "register/<int:pk>/",
+        RegisterPatientDetailView.as_view(),
+        name="register_detail",
+    ),
+    path(
+        "register/create/", RegisterPatientCreateView.as_view(), name="register_create"
+    ),
+    path(
+        "register/<int:pk>/update/",
+        RegisterPatientUpdateView.as_view(),
+        name="register_update",
     ),
 ]

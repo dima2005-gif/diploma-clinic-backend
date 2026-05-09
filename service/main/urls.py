@@ -64,6 +64,10 @@ from .views.statistics.doctor_visits import DoctorVisitsStatisticsView
 from .views.statistics.service_popularity import ServicePopularityStatisticsView
 from .views.statistics.analysis_popularity import AnalysisPopularityStatisticsView
 from .views.statistics.diagnosis_statistics import DiagnosisStatisticsView
+from .views.guest.service_list import GuestServiceListView
+from .views.guest.service_detail import GuestServiceDetailView
+from .views.guest.doctor_list import GuestDoctorListView
+from .views.guest.doctor_detail import GuestDoctorDetailView
 
 
 urlpatterns = [
@@ -345,5 +349,16 @@ urlpatterns = [
         "statistics/diagnosis/",
         DiagnosisStatisticsView.as_view(),
         name="statistics_diagnosis",
+    ),
+    # Guest
+    path("guest/services/", GuestServiceListView.as_view(), name="guest_service_list"),
+    path(
+        "guest/services/<int:pk>/",
+        GuestServiceDetailView.as_view(),
+        name="guest_service_detail",
+    ),
+    path("guest/doctors/", GuestDoctorListView.as_view(), name="guest_doctor_list"),
+    path(
+        "guest/doctors/<int:pk>/", GuestDoctorDetailView.as_view(), name="guest_doctor"
     ),
 ]

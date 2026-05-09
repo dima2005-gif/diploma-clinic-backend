@@ -42,6 +42,29 @@ from .views.register.patient_list import RegisterPatientListView
 from .views.register.patient_detail import RegisterPatientDetailView
 from .views.register.patient_create import RegisterPatientCreateView
 from .views.register.patient_update import RegisterPatientUpdateView
+from .views.admin.employee_list import AdminEmployeeListView
+from .views.admin.employee_detail import AdminEmployeeDetailView
+from .views.admin.position_list import AdminPositionListView
+from .views.admin.employee_create import AdminEmployeeCreateView
+from .views.admin.employee_update import AdminEmployeeUpdateView
+from .views.admin.employee_deactivate import AdminEmployeeDeactivateView
+from .views.admin.employee_activate import AdminEmployeeActivateView
+from .views.admin.employee_schedule_list import AdminEmployeeScheduleView
+from .views.admin.analysis_list import AdminAnalysisListView
+from .views.admin.analysis_detail import AdminAnalysisDetailView
+from .views.admin.analysis_create import AdminAnalysisCreateView
+from .views.admin.analysis_update import AdminAnalysisUpdateView
+from .views.admin.services_list import AdminServiceListView
+from .views.admin.service_detail import AdminServiceDetailView
+from .views.admin.service_create import AdminServiceCreateView
+from .views.admin.service_update import AdminServiceUpdateView
+from .views.admin.doctor_position import AdminDoctorPositionListView
+from .views.admin.audit import AdminAuditView
+from .views.statistics.doctor_visits import DoctorVisitsStatisticsView
+from .views.statistics.service_popularity import ServicePopularityStatisticsView
+from .views.statistics.analysis_popularity import AnalysisPopularityStatisticsView
+from .views.statistics.diagnosis_statistics import DiagnosisStatisticsView
+
 
 urlpatterns = [
     path("login/", MyTokenObtainPairView.as_view(), name="token_obtain_pair"),
@@ -231,5 +254,96 @@ urlpatterns = [
         "register/<int:pk>/update/",
         RegisterPatientUpdateView.as_view(),
         name="register_update",
+    ),
+    # Admin
+    path(
+        "admin/employee/", AdminEmployeeListView.as_view(), name="admin_employee_list"
+    ),
+    path(
+        "admin/employee/<int:pk>/",
+        AdminEmployeeDetailView.as_view(),
+        name="admin_employee_detail",
+    ),
+    path(
+        "admin/position/", AdminPositionListView.as_view(), name="admin_position_list"
+    ),
+    path(
+        "admin/employee/create/", AdminEmployeeCreateView.as_view(), name="admin_create"
+    ),
+    path(
+        "admin/employee/<int:pk>/update/",
+        AdminEmployeeUpdateView.as_view(),
+        name="admin_update",
+    ),
+    path(
+        "admin/employee/<int:pk>/deactivate/",
+        AdminEmployeeDeactivateView.as_view(),
+        name="admin_deactivate",
+    ),
+    path(
+        "admin/employee/<int:pk>/activate/",
+        AdminEmployeeActivateView.as_view(),
+        name="admin_activate",
+    ),
+    path(
+        "admin/employee/<int:pk>/schedule/",
+        AdminEmployeeScheduleView.as_view(),
+        name="admin_schedule",
+    ),
+    path(
+        "admin/analysis/", AdminAnalysisListView.as_view(), name="admin_analysis_list"
+    ),
+    path(
+        "admin/analysis/<int:pk>/",
+        AdminAnalysisDetailView.as_view(),
+        name="admin_analysis_detail",
+    ),
+    path(
+        "admin/analysis/create/", AdminAnalysisCreateView.as_view(), name="admin_create"
+    ),
+    path(
+        "admin/analysis/<int:pk>/update/",
+        AdminAnalysisUpdateView.as_view(),
+        name="admin_update",
+    ),
+    path("admin/service/", AdminServiceListView.as_view(), name="admin_service_list"),
+    path(
+        "admin/service/<int:pk>/",
+        AdminServiceDetailView.as_view(),
+        name="admin_service",
+    ),
+    path(
+        "admin/service/create/", AdminServiceCreateView.as_view(), name="admin_create"
+    ),
+    path(
+        "admin/service/<int:pk>/update/",
+        AdminServiceUpdateView.as_view(),
+        name="admin_update",
+    ),
+    path(
+        "admin/doctor-position/",
+        AdminDoctorPositionListView.as_view(),
+        name="admin_doctor_position",
+    ),
+    path("admin/audit/", AdminAuditView.as_view(), name="admin_audit"),
+    path(
+        "statistics/doctor-visits/",
+        DoctorVisitsStatisticsView.as_view(),
+        name="statistics_doctor_visits",
+    ),
+    path(
+        "statistics/service-popularity/",
+        ServicePopularityStatisticsView.as_view(),
+        name="statistics_service_popularity",
+    ),
+    path(
+        "statistics/analysis-popularity/",
+        AnalysisPopularityStatisticsView.as_view(),
+        name="statistics_analysis_popularity",
+    ),
+    path(
+        "statistics/diagnosis/",
+        DiagnosisStatisticsView.as_view(),
+        name="statistics_diagnosis",
     ),
 ]

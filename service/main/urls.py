@@ -68,6 +68,10 @@ from .views.guest.service_list import GuestServiceListView
 from .views.guest.service_detail import GuestServiceDetailView
 from .views.guest.doctor_list import GuestDoctorListView
 from .views.guest.doctor_detail import GuestDoctorDetailView
+from .views.patient.response_create import PatientResponseCreateView
+from .views.patient.response_available import PatientAvailableResponseListView
+from .views.patient.response_list import PatientResponseListView
+from .views.patient.response_update import PatientResponseUpdateView
 
 
 urlpatterns = [
@@ -125,6 +129,14 @@ urlpatterns = [
         VisitCancelView.as_view(),
         name="patient_cancel_visit",
     ),
+    path(
+        "patient/response/create/",
+        PatientResponseCreateView.as_view(),
+        name="response_create",
+    ),
+    path("patient/response/available/", PatientAvailableResponseListView.as_view()),
+    path("patient/responses/", PatientResponseListView.as_view()),
+    path("patient/response/<int:pk>/update/", PatientResponseUpdateView.as_view()),
     # Doctor
     path(
         "doctor/",

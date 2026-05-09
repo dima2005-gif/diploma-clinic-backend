@@ -133,6 +133,7 @@ class Prescribed_Service(models.Model):
     service = models.ForeignKey(Service_Guide, on_delete=models.CASCADE)
     date_prescribed = models.DateTimeField()
     status = models.CharField(choices=status, max_length=20)
+    reminder_sent = models.BooleanField(default=False)
 
     history = HistoricalRecords()
 

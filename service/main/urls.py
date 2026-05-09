@@ -72,12 +72,14 @@ from .views.patient.response_create import PatientResponseCreateView
 from .views.patient.response_available import PatientAvailableResponseListView
 from .views.patient.response_list import PatientResponseListView
 from .views.patient.response_update import PatientResponseUpdateView
+from .views.auth.password_reset import PasswordResetView
 
 
 urlpatterns = [
     path("login/", MyTokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("token/refresh/", MyTokenRefreshView.as_view(), name="token_refresh"),
     path("logout/", LogoutView.as_view(), name="auth_logout"),
+    path("password-reset/", PasswordResetView.as_view(), name="password_reset"),
     # Patient
     path("patient/", PatientDashboardView.as_view(), name="patient_dashboard"),
     path(

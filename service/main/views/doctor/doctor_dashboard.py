@@ -1,7 +1,7 @@
 from rest_framework.views import APIView, status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from main.models import Employee, Prescribed_Service
+from main.models import Employee, Position, Prescribed_Service
 from datetime import datetime, timezone, timedelta
 
 
@@ -11,6 +11,7 @@ class DoctorDashboardView(APIView):
     def get(self, request):
         try:
             doctor = Employee.objects.get(user=request.user)
+            position = Position.objects.get(id=doctor.position_id)
         except Employee.DoesNotExist:
             return Response({"error": "Лікаря не знайдено"}, status=404)
 
@@ -39,7 +40,8 @@ class DoctorDashboardView(APIView):
 
         return Response(
             {
-                "name": f"{doctor.first_name} {doctor.last_name}",
+                "name": f"{doctor.first_name} {doctor.last_name} {doctor.middle_name}",
+                "position": position.name,
                 "today_count": today_visits,
                 "planned_count": planned,
                 "confirmed_count": confirmed,

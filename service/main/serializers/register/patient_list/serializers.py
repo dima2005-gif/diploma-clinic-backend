@@ -11,4 +11,6 @@ class RegisterPatientListSerializer(serializers.ModelSerializer):
             "last_name",
             "middle_name",
             "sex",
+            "date_of_birth",
+            "phone_number",
         ]

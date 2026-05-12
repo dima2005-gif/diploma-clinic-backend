@@ -1,4 +1,5 @@
 from datetime import date
+
 from django.core.mail import send_mail
 from django.conf import settings
 
@@ -37,6 +38,7 @@ class AdminEmployeeDeactivateView(APIView):
 
         employee.user.save()
         employee.save()
+
         send_mail(
             subject="Зміна статусу акаунта eKarta",
             message=(
@@ -45,9 +47,11 @@ class AdminEmployeeDeactivateView(APIView):
             ),
             from_email=settings.DEFAULT_FROM_EMAIL,
             recipient_list=[employee.email],
-            fail_silently=False,
+            fail_silently=True,
         )
+
         return Response(
             {"message": "Співробітника успішно деактивовано"},
             status=200,
         )
+

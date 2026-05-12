@@ -73,7 +73,8 @@ from .views.patient.response_available import PatientAvailableResponseListView
 from .views.patient.response_list import PatientResponseListView
 from .views.patient.response_update import PatientResponseUpdateView
 from .views.auth.password_reset import PasswordResetView
-
+from .views.register.register import RegisterDashboardView
+from .views.admin.admin import AdminDashboardView 
 
 urlpatterns = [
     path("login/", MyTokenObtainPairView.as_view(), name="token_obtain_pair"),
@@ -259,6 +260,7 @@ urlpatterns = [
         name="laborant_analysis_cancel",
     ),
     # Register
+    path("register/dashboard/", RegisterDashboardView.as_view(), name="register_dashboard"),
     path("register/", RegisterPatientListView.as_view(), name="register"),
     path(
         "register/<int:pk>/",
@@ -274,6 +276,7 @@ urlpatterns = [
         name="register_update",
     ),
     # Admin
+    path("admin/dashboard/", AdminDashboardView.as_view(), name="admin_dashboard"),
     path(
         "admin/employee/", AdminEmployeeListView.as_view(), name="admin_employee_list"
     ),

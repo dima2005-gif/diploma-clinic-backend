@@ -18,4 +18,8 @@ class AdminEmployeeDetailView(APIView):
             return Response({"error": "Співробітника не знайдено"}, status=404)
 
         serializer = AdminEmployeeDetailSerializer(employee)
-        return Response(serializer.data)
+
+        data = serializer.data
+        data["is_current_user"] = employee.user == request.user
+
+        return Response(data)

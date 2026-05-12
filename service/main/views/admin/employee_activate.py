@@ -37,10 +37,11 @@ class AdminEmployeeActivateView(APIView):
             ),
             from_email=settings.DEFAULT_FROM_EMAIL,
             recipient_list=[employee.email],
-            fail_silently=False,
+            fail_silently=True,
         )
 
         return Response(
             {"message": "Співробітника успішно активовано"},
             status=200,
         )
+

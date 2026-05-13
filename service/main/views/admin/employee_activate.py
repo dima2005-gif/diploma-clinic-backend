@@ -44,4 +44,3 @@ class AdminEmployeeActivateView(APIView):
             {"message": "Співробітника успішно активовано"},
             status=200,
         )
-

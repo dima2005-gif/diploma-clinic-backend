@@ -38,7 +38,6 @@ class AdminEmployeeDeactivateView(APIView):
 
         employee.user.save()
         employee.save()
-
         send_mail(
             subject="Зміна статусу акаунта eKarta",
             message=(
@@ -54,4 +53,3 @@ class AdminEmployeeDeactivateView(APIView):
             {"message": "Співробітника успішно деактивовано"},
             status=200,
         )
-

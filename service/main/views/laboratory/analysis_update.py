@@ -67,7 +67,7 @@ class LaborantAnalysisUpdateResultView(APIView):
             ),
             from_email=settings.DEFAULT_FROM_EMAIL,
             recipient_list=[patient_email],
-            fail_silently=False,
+            fail_silently=True,
         )
 
         return Response(

@@ -75,7 +75,9 @@ from .views.patient.response_update import PatientResponseUpdateView
 from .views.auth.password_reset import PasswordResetView
 from .views.register.register import RegisterDashboardView
 from .views.admin.admin import AdminDashboardView 
-
+from main.views.admin.employee_schedule_create import AdminEmployeeScheduleCreateView
+from main.views.admin.employee_schedule_update import AdminEmployeeScheduleUpdateView
+from main.views.admin.employee_schedule_delete import AdminEmployeeScheduleDeleteView
 urlpatterns = [
     path("login/", MyTokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("token/refresh/", MyTokenRefreshView.as_view(), name="token_refresh"),
@@ -311,6 +313,20 @@ urlpatterns = [
         AdminEmployeeScheduleView.as_view(),
         name="admin_schedule",
     ),
+path(
+    "admin/employee/<int:pk>/schedule/create/",
+    AdminEmployeeScheduleCreateView.as_view(),
+),
+
+path(
+    "admin/employee/<int:pk>/schedule/<int:schedule_id>/update/",
+    AdminEmployeeScheduleUpdateView.as_view(),
+),
+
+path(
+    "admin/employee/<int:pk>/schedule/<int:schedule_id>/delete/",
+    AdminEmployeeScheduleDeleteView.as_view(),
+),
     path(
         "admin/analysis/", AdminAnalysisListView.as_view(), name="admin_analysis_list"
     ),

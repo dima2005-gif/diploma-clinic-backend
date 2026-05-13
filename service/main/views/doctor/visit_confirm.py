@@ -53,11 +53,10 @@ class VisitConfirmView(APIView):
             ),
             from_email=settings.DEFAULT_FROM_EMAIL,
             recipient_list=[visit.patient.email],
-            fail_silently=False,
+            fail_silently=True,
         )
 
         return Response(
             {"message": f"Статус змінено на '{visit.status}'"},
             status=200,
         )
-

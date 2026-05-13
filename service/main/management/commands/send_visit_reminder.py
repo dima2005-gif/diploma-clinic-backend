@@ -36,7 +36,7 @@ class Command(BaseCommand):
                 ),
                 from_email=settings.DEFAULT_FROM_EMAIL,
                 recipient_list=[visit.patient.email],
-                fail_silently=False,
+                fail_silently=True,
             )
 
             visit.reminder_sent = True
